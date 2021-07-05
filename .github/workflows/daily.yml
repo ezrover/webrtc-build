@@ -3,10 +3,11 @@ name: build
 on:
   schedule:
     # 毎日 09:00 JST
-    # - cron: "0 0 * * *"
+    - cron: "0 0 * * *"
 
 jobs:
   build-windows:
+    if: ${{ false }}  # disable for now
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
@@ -27,6 +28,7 @@ jobs:
     - run: Copy-Item VERSION.head VERSION
     - run: "& .\\build.windows.ps1"
   build-macos:
+    if: ${{ false }}  # disable for now
     strategy:
       fail-fast: false
       matrix:
@@ -42,6 +44,7 @@ jobs:
     - run: cp VERSION.head VERSION
     - run: ./build.${{ matrix.name }}.sh
   build-linux:
+    if: ${{ false }}  # disable for now
     strategy:
       fail-fast: false
       matrix:
