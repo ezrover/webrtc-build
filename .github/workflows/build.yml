@@ -36,6 +36,7 @@ jobs:
         name: webrtc.windows.zip
         path: _package\windows\webrtc.zip
   build-macos:
+    if: ${{ false }}  # disable for now
     strategy:
       fail-fast: false
       matrix:
@@ -87,7 +88,7 @@ jobs:
     if: contains(github.ref, 'tags/m')
     needs:
       - build-windows
-      - build-macos
+      # - build-macos
       - build-linux
     runs-on: ubuntu-18.04
     steps:
@@ -114,9 +115,9 @@ jobs:
       fail-fast: false
       matrix:
         name:
-          - macos_arm64
-          - macos_x86_64
-          - ios
+          #- macos_arm64
+          #- macos_x86_64
+          #- ios
           - raspberry-pi-os_armv6
           - raspberry-pi-os_armv7
           - raspberry-pi-os_armv8
