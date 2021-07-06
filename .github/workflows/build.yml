@@ -45,7 +45,7 @@ jobs:
           - macos_arm64
           - macos_x86_64
           - ios
-    runs-on: macOS-11.0
+    runs-on: macos-11.0
     steps:
     - uses: actions/checkout@v2
     - run: ./build.${{ matrix.name }}.sh
@@ -160,7 +160,7 @@ jobs:
   upload-assets-windows:
     if: ${{ false }}  # disable for now
     name: Upload windows
-    if: contains(github.ref, 'tags/m')
+    #if: contains(github.ref, 'tags/m')
     needs:
       - create-release
     runs-on: ubuntu-latest
